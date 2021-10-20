@@ -11,6 +11,7 @@ const Comments = ({videoId,totalComments}) => {
     
   }, [dispatch,videoId])
   const comments = useSelector(state =>state.commentList.comments)
+  const {photoUrl}= useSelector(state=>state.auth?.user)
   const _comments=comments?.map(comment=>comment.snippet.topLevelComment.snippet)
   const [text,setText]=useState(' ')
     const handleComment=(e)=>{
@@ -24,7 +25,7 @@ const Comments = ({videoId,totalComments}) => {
         <div className="comments">
            <p>{totalComments} Comments</p> 
            <div className="comment__form d-flex w-100 my-2">
-               <img src="https://www.bing.com/th?id=OIP.X_65uIJkSF8bJl_zyU4twgHaEo&w=155&h=100&c=8&rs=1&qlt=90&o=6&dpr=1.5&pid=3.1&rm=2" alt=" " className="rounded-circle mr-3" />
+               <img src={photoUrl} alt=" " className="rounded-circle mr-3" />
                <form onSubmit={handleComment} className="d-flex flex-grow-1">
                  <input type="text" className="flex-grow-1" placeholder="write a comment..."
                  value={text} onChange={e=>setText(e.target.value)}/>

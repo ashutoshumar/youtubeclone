@@ -95,7 +95,8 @@ export const relatedVideoReducer=(state={
    export const searchedVideosReducer=(state={
     loading:true,
     videos:[], 
-    nextPageToken:null ,  
+    nextPageToken:null,
+    activeSearch:null ,  
    },action)=>{
        const {payload,type}=action
        switch(type)
@@ -106,9 +107,10 @@ export const relatedVideoReducer=(state={
            }
            case SEARCHED_VIDEO_SUCCESS:return{
                ...state,
-               videos:payload.videos,
+               videos: state.activeSearch===payload.category?[...state.videos,...payload.videos]:payload.videos,
                loading:false,
                nextPageToken:payload.nextPageToken,
+               activeSearch:payload.category,
    
            }
            case SEARCHED_VIDEO_FAIL:return{

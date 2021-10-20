@@ -11,6 +11,7 @@ import { useEffect } from 'react'
 import { getRelatedVideos, getVideoById } from '../../redux/actions/videos.action'
 import Skeleton from 'react-loading-skeleton'
 import { SkeletonTheme } from 'react-loading-skeleton'
+
 const WatchScreen = () => {
     const {id}=useParams()
     const dispatch = useDispatch()
@@ -23,6 +24,7 @@ const WatchScreen = () => {
     const {videos,loading:relatedVideosLoading}=useSelector(state=>state.relatedVideo)
     return (
        <Row>
+           
             <Col lg={8}>
                 <div className="watchScreen__player">
                   <iframe src={`http://www.youtube.com/embed/${id}`}
