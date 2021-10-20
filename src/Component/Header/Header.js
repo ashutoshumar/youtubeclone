@@ -1,6 +1,6 @@
 import React from 'react'
 import "./_header.scss"
-import {FaBars} from "react-icons/fa"
+import {FaBars} from 'react-icons/fa'
 import {AiOutlineSearch} from "react-icons/ai"
 import {MdNotifications,MdApps} from "react-icons/md"
 import { useState } from "react"
